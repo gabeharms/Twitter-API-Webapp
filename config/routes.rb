@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   
   get 'signup'  => 'users#new'
   
+  resources :users                                    # Automatically ensures that our Rails application responds to the RESTful URLs
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
