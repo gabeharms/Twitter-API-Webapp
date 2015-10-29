@@ -3,16 +3,15 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   
-  include SessionsHelper
-
-  private
-
-    # Confirms a logged-in user.
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Please log in."
-        redirect_to login_url
+  private 
+  
+    def client
+      @client ||= Twitter::REST::Client.new do |config|
+        config.consumer_key = "KmziBBGEcdyLkfCznsw5JpjAM"
+        config.consumer_secret = "dJkd7v6RsXoqffIoiSLa3Eu3NCYUZLlHgCNIzNzCgqQ538uVin"
+        config.access_token = session['access_token']
+        config.access_token_secret = session['access_token_secret']
       end
     end
+    
 end
