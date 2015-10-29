@@ -18,6 +18,7 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'twitter'
 gem 'twitter-text'
+gem 'unicorn'
 
 
 group :development, :test do
