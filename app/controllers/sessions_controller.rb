@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def show
+    byebug
     if session['access_token'] && session['access_token_secret']
       @user = client.user(include_entities: true)
     else
