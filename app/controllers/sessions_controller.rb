@@ -1,29 +1,26 @@
 class SessionsController < ApplicationController
-  def new
+  def create
+    credentials = request.env['omniauth.auth']['credentials']
+    session[:access_token] = credentials['token']
+    session[:access_token_secret] = credentials['secret']
+    redirect_to profile_path, notice: 'Signed in'
   end
- 
-  def create 
-  user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      if user.activated?
-        log_in user
-        params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        redirect_back_or user
-      else
-        message  = "Account not activated. "
-        message += "Check your email for the activation link."
-        flash[:warning] = message
-        redirect_to root_url
-      end
+
+  def show
+    if session['access_token'] && session['access_token_secret']
+      @user = client.user(include_entities: true)
     else
-      flash.now[:danger] = 'Invalid email/password combination' # Not quite right!
-      render 'new'
+      redirect_to failure_path
     end
   end
-  
-  def destroy
-    log_out if logged_in?
-    redirect_to root_url
+
+  def error
+    flash[:error] = 'Sign in with Twitter failed'
+    redirect_to root_path
   end
-  
+
+  def destroy
+    reset_session
+    redirect_to root_path, notice: 'Signed out'
+  end
 end
