@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   require 'geoip'
+  require 'will_paginate/array'
   
   def create
     credentials = request.env['omniauth.auth']['credentials']
@@ -21,10 +22,7 @@ class SessionsController < ApplicationController
     @longitude = info.longitude
     @city = info.city_name
     @region = info.real_region_name
-    client.search("to:justinbieber marry me", result_type: "recent").take(3).collect do |tweet|
-      "#{tweet.user.screen_name}: #{tweet.text}"
-    end
-    
+    @tweets = client.search("to:justinbieber marry me", result_type: "recent").take(3).paginate(page: params[:page])
   end
 
   def error
