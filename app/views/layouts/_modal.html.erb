@@ -10,10 +10,15 @@
       <%=form_tag("/reply", method: "post") do |f| %>
           <div>
               Response:
-                <%= text_area_tag(:message, "Hi, nice site", class: "custom-field form-group") %>
+                <%= text_area_tag('reply_to_tweet_response', nil, placeholder: 'Your reply...', rows: 5, class: "custom-field form-group") %>
+                <%= hidden_field_tag 'reply_to_tweet_id' %>
+                <%= hidden_field_tag 'reply_to_tweet_user' %>
           </div>
           <%= submit_tag("Reply") %>
             <% end %>
     </section>
   </div>
 </div>
+<script>
+  
+</script>

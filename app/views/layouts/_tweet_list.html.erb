@@ -1,3 +1,25 @@
+<script>
+  $(document).ready(function(){
+    $("#pop-up-toggle").hide();
+  });
+  
+  $(document).ready(function(){
+    $(".modal-popup").click(function(event){
+      $("#reply_to_tweet_id").val(event.target.id.split(" ")[0]);
+      $("#reply_to_tweet_user").val(event.target.id.split(" ")[1]);
+      $("#pop-up-toggle").fadeToggle();
+      $("#container").fadeTo( "fast", 0.5 );
+      console.log("here")
+      return false;
+    });
+    $("#hide-popup").click(function(){
+      $("#pop-up-toggle").fadeToggle();
+      $("#container").fadeTo( "fast", 1 );
+      console.log("over here");
+      return false;
+    });
+  });
+</script>
 <ol class="tweet-list">
   <% tweets.each do |tweet| %>
     <li>
@@ -23,15 +45,13 @@
       </div>
       <div class="div-align-right">
         <div class="float-right">
-          <a href="#" id="create-popup">
-            <div class="btn btn-default">Reply</div>
-          </a>
+          <div class="btn btn-default modal-popup" id="<%= "#{tweet.id} #{tweet.user.screen_name}"%>">Reply</div>
         </div>
         <div class="float-right margin-right">
           <%= button_to "Retweet", retweet_path(:tweet_id => tweet.id), class: 'btn btn-danger' %>
         </div>
         <div class="float-right margin-right">
-              <%= button_to "Claim", { action: "show" }, class: 'btn btn-default' %>
+              <%= button_to "Claim", { action: "show" }, class: 'btn btn-default', id: "#{tweet.id} #{tweet.user.screen_name}" %>
         </div>
       </div>
       <div class="clear-float"></div>
