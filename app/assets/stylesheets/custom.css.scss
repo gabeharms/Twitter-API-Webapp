@@ -266,7 +266,7 @@ span.picture {
   .tweet-info{
     float: left;
     display: block;
-    width: 70%;
+    width: 50%;
     margin: 0 20px 5px 20px;
     .timestamp {
       color: #9d9d9d;
@@ -299,67 +299,10 @@ span.picture {
 .spacer20{
 	height: 20px;
 }
-
-.new-ticket-field{
-    -webkit-border-radius: 2px; 
-    -moz-border-radius: 2px; 
-    border-radius: 2px; 
-    border: 1px solid #848484; 
-    outline:0; 
-    text-wrap: normal;
-    max-height:40px;
-    resize: none;
-}
-
-.new-ticket-customer-id-field{
-    -webkit-border-radius: 5px; 
-    -moz-border-radius: 5px; 
-    border-radius: 5px; 
-    border: 1px solid #848484;
-    max-height: 25px;
-    resize: none;
-}
-
-.comment-attachment{
-  color: #848484;
-  font-size: 1em;
-  padding: 15px 0 0 0;
-  border-bottom: 1px solid #848484;
-}
-
 hr{
   color: #333333;             //for IE
   border-color: #333333;      //for chrome and firefox
   background-color: #333333;  //for safari
-}
-
-.notes-text-field{
-  min-height: 200px;
-}
-
-.notesTitle-padding{
-  padding-top: 18px;
-}
-
-.noteSave-btn{
-  width: 100%;
-}
-
-.cust-name{
-  float: left;
-  a{
-    color: #b93e36;
-    text-decoration: none;
-  }
-  a:hover{
-    color: #b93e36;
-  }
-}
-
-.category-drop{
-  float: right;
-  width: 200px;
-  margin-top: 25px;
 }
 
 .color-light{
@@ -372,4 +315,76 @@ hr{
 
 .margin-right{
   margin: 0 10px 0 0;
+}
+
+.filter-bar{
+	.item{
+		height: 1.9em;
+		line-height: 1.9em;
+		display: block;
+		margin: 0 0.2%;
+		color:#174877;
+		padding: 1px 15px;
+		margin: 2px 0;
+		border-radius: 5px;
+		text-decoration: none;
+	}
+	.item:hover{
+		color:#002e5a;
+		background-color: #fafafa;
+	}
+	a:hover{
+		text-decoration: none;
+	}
+	.refine-label{
+		margin: 10px 0 0 5px;
+		text-align: left;
+		font-size:1.5em;
+		font-weight: 500;
+  		color: #999999;
+	}
+}
+
+.create-tweet-e{
+		width: 120px;
+		margin: 25px 0 10px 0;
+		padding: 5px 10px;
+		color: #FFFFFF;
+		text-align: center;
+		font-weight: 450;
+		font-size: 1.1em;
+		background: #002e5a;
+		border: 1px solid #f3f3f3;
+		border-radius: 10px;
+}
+
+.pop-up-container{
+	position: fixed;
+	z-index: 99;
+	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+	.pop-up{
+		position: relative;
+		margin: auto;
+		padding: 0 20px 20px 20px;
+		border: 1px solid #e8e8e8;
+		border-radius: 10px;
+		background: #FFFFFF;
+	}
+	.close-x{
+		float: right;
+		position: absolute;
+		top: 20px;
+		right: 20px;
+	}
+}
+
+.custom-field {
+    -webkit-border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    border-radius: 5px; 
+    border: 1px solid #848484;
+    max-height: 25px;
+    resize: none;
 }
