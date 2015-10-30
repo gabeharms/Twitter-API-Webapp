@@ -1,4 +1,6 @@
 <script>
+  
+  // Reply to tweet modal actions
   $(document).ready(function(){
     $("#pop-up-toggle").hide();
   });
@@ -9,13 +11,31 @@
       $("#reply_to_tweet_user").val(event.target.id.split(" ")[1]);
       $("#pop-up-toggle").fadeToggle();
       $("#container").fadeTo( "fast", 0.5 );
-      console.log("here")
       return false;
     });
     $("#hide-popup").click(function(){
       $("#pop-up-toggle").fadeToggle();
       $("#container").fadeTo( "fast", 1 );
-      console.log("over here");
+      return false;
+    });
+  });
+  
+  // Add to list modal actions
+   $(document).ready(function(){
+//    $("#list-up-toggle").hide();
+  });
+  
+  $(document).ready(function(){
+    $(".add-list-item").click(function(event){
+      $("#add_to_list_author").val(event.target.id);
+      console.log("yo");
+      $("#list-up-toggle").fadeToggle();
+      $("#container").fadeTo( "fast", 0.5 );
+      return false;
+    });
+    $("#hide-list-popup").click(function(){
+      $("#list-up-toggle").fadeToggle();
+      $("#container").fadeTo( "fast", 1 );
       return false;
     });
   });
@@ -51,7 +71,7 @@
           <%= button_to "Retweet", retweet_path(:tweet_id => tweet.id), class: 'btn btn-danger' %>
         </div>
         <div class="float-right margin-right">
-              <%= button_to "Claim", { action: "show" }, class: 'btn btn-default', id: "#{tweet.id} #{tweet.user.screen_name}" %>
+          <div class="btn btn-default add-list-item" id="<%= "#{tweet.user.screen_name}"%>">Add to List</div>
         </div>
       </div>
       <div class="clear-float"></div>

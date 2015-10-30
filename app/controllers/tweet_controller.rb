@@ -15,4 +15,13 @@ class TweetController < ApplicationController
       redirect_to profile_path
     end
     
+    def lists
+      if (params[:list_name].downcase == 'new list') 
+        session['lists'] = {} if session['lists'].nil?
+        session['lists'][params[:list_name]] = []
+      end
+      session['lists'][params[:list_name]].push(params[:add_to_list_author])
+      
+    end
+    
 end
