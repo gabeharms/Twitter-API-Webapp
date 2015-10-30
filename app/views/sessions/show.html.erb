@@ -32,4 +32,9 @@
     <%= @city %>
     <%= @region %>
   </div>
+  <div class="row">
+     <div id="all_tweets" >
+        <%= render 'layouts/tweet_list', :tweets => @tweets %>
+      </div>
+  </div>
 </div>
