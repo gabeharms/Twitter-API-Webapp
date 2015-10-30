@@ -17,16 +17,3 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function(){
-  $("#pop-up-toggle").hide();
-  $("#create-popup").click(function(){
-    $("#pop-up-toggle").fadeToggle();
-    $("#container").fadeTo( "fast", 0.5 );
-    return false;
-  });
-  $("#hide-popup").click(function(){
-    $("#pop-up-toggle").fadeToggle();
-    $("#container").fadeTo( "fast", 1 );
-    return false;
-  });
-});
