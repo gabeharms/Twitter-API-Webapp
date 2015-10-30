@@ -20,9 +20,10 @@ class SessionsController < ApplicationController
     info = GeoIP.new(Rails.root.join("GeoLiteCity.dat")).city(request.remote_ip)
     @latitude = info.latitude
     @longitude = info.longitude
+    @radius = 1000000
     @city = info.city_name
     @region = info.real_region_name
-    @tweets = client.search("to:justinbieber marry me", result_type: "recent").take(3).paginate(page: params[:page])
+    @tweets = client.search("kobe bryant", result_type: "recent", geocode:"#{@latitude},#{@longitude},#{@radius}mi").take(500).paginate(page: params[:page], :per_page => 5)
   end
 
   def error
