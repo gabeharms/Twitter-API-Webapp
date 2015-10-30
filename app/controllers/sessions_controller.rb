@@ -17,6 +17,12 @@ class SessionsController < ApplicationController
       redirect_to failure_path
     end
     
+    if session['lists'].nil?
+      session['lists'] = {}
+      session['lists']["new list"] = []
+    end
+    @lists = session['lists'].keys
+ 
     info = GeoIP.new(Rails.root.join("GeoLiteCity.dat")).city(request.remote_ip)
     @latitude = info.latitude
     @longitude = info.longitude
