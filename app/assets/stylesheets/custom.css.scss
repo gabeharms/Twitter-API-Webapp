@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -292,4 +293,83 @@ span.picture {
       padding: 5px 0;
     }
   }
+}
+
+
+.spacer20{
+	height: 20px;
+}
+
+.new-ticket-field{
+    -webkit-border-radius: 2px; 
+    -moz-border-radius: 2px; 
+    border-radius: 2px; 
+    border: 1px solid #848484; 
+    outline:0; 
+    text-wrap: normal;
+    max-height:40px;
+    resize: none;
+}
+
+.new-ticket-customer-id-field{
+    -webkit-border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    border-radius: 5px; 
+    border: 1px solid #848484;
+    max-height: 25px;
+    resize: none;
+}
+
+.comment-attachment{
+  color: #848484;
+  font-size: 1em;
+  padding: 15px 0 0 0;
+  border-bottom: 1px solid #848484;
+}
+
+hr{
+  color: #333333;             //for IE
+  border-color: #333333;      //for chrome and firefox
+  background-color: #333333;  //for safari
+}
+
+.notes-text-field{
+  min-height: 200px;
+}
+
+.notesTitle-padding{
+  padding-top: 18px;
+}
+
+.noteSave-btn{
+  width: 100%;
+}
+
+.cust-name{
+  float: left;
+  a{
+    color: #b93e36;
+    text-decoration: none;
+  }
+  a:hover{
+    color: #b93e36;
+  }
+}
+
+.category-drop{
+  float: right;
+  width: 200px;
+  margin-top: 25px;
+}
+
+.color-light{
+  color: #FFFFFF;
+}
+
+.float-right{
+  float: right;
+}
+
+.margin-right{
+  margin: 0 10px 0 0;
 }
