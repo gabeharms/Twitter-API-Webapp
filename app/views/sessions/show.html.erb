@@ -1,2 +1,35 @@
-<%= @user.screen_name %>
-<%= @user.description %>
+
+<div class="container">
+  <div class="row">
+    <div class="span6">
+      <h1><%= @user.screen_name %></h1>
+      <h6 style="text-align:center"><%= @user.description %></h6>
+    </div>
+    <div class="span6">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Tweets</th>
+            <th>Following</th>
+            <th>Followers</th>
+            <th>Favorites</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @user.statuses_count %></td>
+            <td><%= @user.friends_count %></td>
+            <td><%= @user.followers_count %></td>
+            <td><%= @user.favorites_count %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <%= @latitude %>
+    <%= @longitude %>
+    <%= @city %>
+    <%= @region %>
+  </div>
+</div>
