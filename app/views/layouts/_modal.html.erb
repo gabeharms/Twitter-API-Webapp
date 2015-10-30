@@ -1,0 +1,19 @@
+<div class="pop-up-container" id="pop-up-toggle">
+  <div class="pop-up">
+    <h3>Reply to Tweet</h3>
+    <div class="close-x">
+      <a href="#" id="hide-popup">
+        <%= image_tag( "close-x.png", :alt=> "close", size: "20x20") %></a>
+    </div>
+    <div class="spacer20"></div>
+    <section class="micropost_form">
+      <%=form_tag("/reply", method: "post") do |f| %>
+          <div>
+              Response:
+                <%= text_area_tag(:message, "Hi, nice site", class: "custom-field form-group") %>
+          </div>
+          <%= submit_tag("Reply") %>
+            <% end %>
+    </section>
+  </div>
+</div>
