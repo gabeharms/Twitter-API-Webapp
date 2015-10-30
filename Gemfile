@@ -19,6 +19,7 @@ gem 'omniauth-twitter'
 gem 'twitter'
 gem 'twitter-text'
 gem 'unicorn'
+gem 'geoip'
 
 
 group :development, :test do
