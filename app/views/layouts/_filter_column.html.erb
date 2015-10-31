@@ -1,19 +1,18 @@
 <div class="spacer20"></div>
 <div class="spacer20"></div>
-<div class="btn btn-primary create_tweet" style="margin: 0px 0px 0px -10px">View Lists</div>
 
-<div class="spacer20"></div>
-<div class="refine-label" style="font-size: 2em; margin: 0px 0px 0px -10px">Filters</div>
-
+<div class="refine-label" style="font-size: 2em; margin: 0px 0px 0px -10px">Lists</div>
+<div class="btn btn-primary create_tweet" id="create" style="margin: 0px 0px 0px -10px">View Lists Details</div>
 <div class="refine-label">Author Lists</div>
   <% session['lists'].each do |key,value| %>
     <% if key != 'new list' %>
-      <%= link_to({:filter_by_list => key, :search_for => @search_for}) do %>
         <div class="item"><%= key %></div> 
-      <% end %>
     <% end %>
   <% end %>
 
+
+<div class="spacer20"></div>
+<div class="refine-label" style="font-size: 2em; margin: 0px 0px 0px -10px">Filters</div>
 <div class="refine-label">Result Type</div>
   <%= link_to({:filter_by_type => 'recent', :search_for => @search_for}) do %>
   <div class="item">Recent</div> <% end %>
@@ -30,3 +29,23 @@
   <%= link_to({:filter_by_radius => '1000', :search_for => @search_for}) do %>
   <div class="item">1000 miles</div> <% end %>
 
+<script>
+   // Display Lists modal actions
+   $(document).ready(function(){
+     $("#lists-display-toggle").hide();
+  });
+  
+  $(document).ready(function(){
+    $("#create").click(function(event){
+      console.log('here');
+      $("#lists-display-toggle").fadeToggle();
+      $("#container").fadeTo( "fast", 0.5 );
+      return false;
+    });
+    $("#hide-lists-popup").click(function(){
+      $("#lists-display-toggle").fadeToggle();
+      $("#container").fadeTo( "fast", 1 );
+      return false;
+    });
+  });
+</script>
