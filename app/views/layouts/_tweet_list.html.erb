@@ -53,6 +53,7 @@
 <ol class="tweet-list">
   <% tweets.each do |tweet| %>
     <li>
+      <img class="avatar-sm" src="<%= tweet.user.profile_image_url %>" alt="">
       <div class="tweet-info">
         <%= tweet.text %>
         <p class="timestamp">
@@ -74,6 +75,7 @@
 
         </p>
       </div>
+      
       <div class="div-align-right">
         <div class="float-right">
           <%= button_to "Favorite", favorite_path(:tweet_id => tweet.id), class: 'btn btn-primary' %>

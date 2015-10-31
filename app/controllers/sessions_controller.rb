@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
       else
         redirect_to failure_path
       end
-      
+
       if no_lists_exist
         create_empty_one
       end

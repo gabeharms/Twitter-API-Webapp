@@ -1,15 +1,16 @@
 <div class="spacer20"></div>
 <div class="spacer20"></div>
 
-<div class="refine-label" style="font-size: 2em; margin: 0px 0px 0px -10px">Lists</div>
 <div class="btn btn-primary create_tweet" id="create" style="margin: 0px 0px 0px -10px">View Lists Details</div>
-<div class="refine-label">Author Lists</div>
+<div class="refine-label" style="font-size: 2em; margin: 0px 0px 0px -10px">Lists</div>
   <% session['lists'].each do |key,value| %>
     <% if key != 'new list' %>
         <div class="item"><%= key %></div> 
     <% end %>
   <% end %>
-
+  <% if session['lists'].count <= 1 %>
+        <div class="item">No lists created yet</div> 
+    <% end %>
 
 <div class="spacer20"></div>
 <div class="refine-label" style="font-size: 2em; margin: 0px 0px 0px -10px">Filters</div>

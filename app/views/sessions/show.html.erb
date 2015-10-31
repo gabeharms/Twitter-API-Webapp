@@ -2,31 +2,36 @@
 <div class="container">
   <div class="row">
     <div class="span6">
-      <h1><%= @user.screen_name %></h1>
+      <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+          <h1 class="float-right"><%= @user.screen_name %></h1>
+          <img class="avatar float-left" src="<%= @user.profile_image_url %>" alt="">
+        </div>
+      </div>
       <h6 style="text-align:center"><%= @user.description %></h6>
     </div>
     <div class="span6">
       <table class="table">
         <thead>
           <tr>
-            <th>Tweets</th>
-            <th>Following</th>
-            <th>Followers</th>
-            <th>Favorites</th>
+            <th style="text-align: center">Tweets</th>
+            <th style="text-align: center">Following</th>
+            <th style="text-align: center">Followers</th>
+            <th style="text-align: center">Favorites</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><%= @user.statuses_count %></td>
-            <td><%= @user.friends_count %></td>
-            <td><%= @user.followers_count %></td>
-            <td><%= @user.favorites_count %></td>
+            <td style="text-align: center"><%= @user.statuses_count %></td>
+            <td style="text-align: center"><%= @user.friends_count %></td>
+            <td style="text-align: center"><%= @user.followers_count %></td>
+            <td style="text-align: center"><%= @user.favorites_count %></td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-  <div class="row"><div class="spacer20"></div><div class="spacer20"></div><div class="spacer20"></div></div>
+  <div class="row"><div class="spacer20"></div><div class="spacer20"></div></div>
   <div class="row">
     <div class="search">
       <%= form_tag(search_path) do  %>
