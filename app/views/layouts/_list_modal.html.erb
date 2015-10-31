@@ -1,0 +1,27 @@
+<div class="pop-up-container" id="list-up-toggle">
+  <div class="pop-up">
+    <h3>Reply to Tweet</h3>
+    <div class="close-x">
+      <a href="#" id="hide-list-popup">
+        <%= image_tag( "close-x.png", :alt=> "close", size: "20x20") %></a>
+    </div>
+    <div class="spacer20"></div>
+    <section class="micropost_form">
+      <%=form_tag('/lists') do  %>
+          <div>
+              Add Author to List:
+                <%= 
+                  select_tag :list_selection,  options_for_select(session['lists'].keys, :selected => "new list"), class: 'custom-field form-group' # we get the data from here!
+                %>
+                <div id="list_name_wrapper"><input type='text' id='list_name' name='list_name'></div>
+                <%= hidden_field_tag 'add_to_list_author' %>
+          </div>
+          <%= submit_tag("Add") %>
+            <% end %>
+    </section>
+  </div>
+</div>
+<script>
+  
+  
+</script>
