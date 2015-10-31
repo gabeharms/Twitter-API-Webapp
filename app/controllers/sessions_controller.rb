@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
     @radius = params[:filter_by_radius] || 1000000
     @result_type = params[:filter_by_type] || 'recent'
     @selected_list = params[:filter_by_list]
-    @search_for = params[:search_for] || 'healthcare'
+    @search_for = params[:search_for] || 'kobe'
     
     @tweets = getTweets
   end
