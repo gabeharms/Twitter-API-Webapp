@@ -20,7 +20,7 @@
     });
   });
   
-  // Add to list modal actions
+  // 'Add to list' modal actions
    $(document).ready(function(){
     console.log('hey');
     $("#list-up-toggle").hide();
@@ -42,7 +42,7 @@
   
     $('#list_selection').on('change', function() {
       if ($(this).val() == 'new list') {
-        $('#list_name_wrapper').append("List Name: <input type='text' id='list_name' name='list_name'>");
+        $('#list_name_wrapper').append("New List Name: <input type='text' id='list_name' name='list_name'>");
       }
       else {
         $('#list_name_wrapper').empty();
@@ -50,13 +50,32 @@
     });
   
   });
+  
+  // Display Lists modal actions
+   $(document).ready(function(){
+    console.log('hey');
+    $("#list-display-toggle").hide();
+  });
+  
+  $(document).ready(function(){
+    $(".add-list-item").click(function(event){
+      $("#list-display-toggle").fadeToggle();
+      $("#container").fadeTo( "fast", 0.5 );
+      return false;
+    });
+    $("#hide-lists-popup").click(function(){
+      $("#list-display-toggle").fadeToggle();
+      $("#container").fadeTo( "fast", 1 );
+      return false;
+    });
+  });
+  
 </script>
 <ol class="tweet-list">
   <% tweets.each do |tweet| %>
     <li>
       <div class="tweet-info">
         <%= tweet.text %>
-        <%= link_to "view on twitter", "#"  %>
         <p class="timestamp">
           updated
             <% time = time_ago_in_words(tweet.created_at) %>
@@ -72,14 +91,19 @@
             <% else %>
               <%= time %> ago
             <% end %>
+              <%= link_to "view on twitter", "#"  %>
+
         </p>
       </div>
       <div class="div-align-right">
         <div class="float-right">
-          <div class="btn btn-default modal-popup" id="<%= "#{tweet.id} #{tweet.user.screen_name}"%>">Reply</div>
+          <%= button_to "Favorite", favorite_path(:tweet_id => tweet.id), class: 'btn btn-primary' %>
         </div>
         <div class="float-right margin-right">
-          <%= button_to "Retweet", retweet_path(:tweet_id => tweet.id), class: 'btn btn-danger' %>
+          <%= button_to "Retweet", retweet_path(:tweet_id => tweet.id), class: 'btn btn-info' %>
+        </div>
+        <div class="float-right  margin-right">
+          <div class="btn btn-default modal-popup" id="<%= "#{tweet.id} #{tweet.user.screen_name}"%>">Reply</div>
         </div>
         <div class="float-right margin-right">
           <div class="btn btn-default add-list-item" id="<%= "#{tweet.user.screen_name}"%>">Add to List</div>

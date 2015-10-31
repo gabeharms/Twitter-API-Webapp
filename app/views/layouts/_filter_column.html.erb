@@ -1,29 +1,32 @@
 <div class="spacer20"></div>
-Filters
 <div class="spacer20"></div>
+<div class="btn btn-primary create_tweet" style="margin: 0px 0px 0px -10px">View Lists</div>
+
+<div class="spacer20"></div>
+<div class="refine-label" style="font-size: 2em; margin: 0px 0px 0px -10px">Filters</div>
 
 <div class="refine-label">Author Lists</div>
   <% session['lists'].each do |key,value| %>
     <% if key != 'new list' %>
-      <%= link_to({:filter_by_list => key}) do %>
+      <%= link_to({:filter_by_list => key, :search_for => @search_for}) do %>
         <div class="item"><%= key %></div> 
       <% end %>
     <% end %>
   <% end %>
 
 <div class="refine-label">Result Type</div>
-  <%= link_to({:filter_by_type => 'recent'}) do %>
+  <%= link_to({:filter_by_type => 'recent', :search_for => @search_for}) do %>
   <div class="item">Recent</div> <% end %>
-  <%= link_to({:filter_by_type => 'popular'}) do %>
+  <%= link_to({:filter_by_type => 'popular', :search_for => @search_for}) do %>
   <div class="item">Popular</div> <% end %>
-  <%= link_to({:filter_by_type => 'mixed'}) do %>
+  <%= link_to({:filter_by_type => 'mixed', :search_for => @search_for}) do %>
   <div class="item">Mixed</div> <% end %>
   
 <div class="refine-label">Radius</div>
-  <%= link_to({:filter_by_radius => '20'}) do %>
+  <%= link_to({:filter_by_radius => '20', :search_for => @search_for}) do %>
   <div class="item">20 miles</div> <% end %>
-  <%= link_to({:filter_by_radius => '100'}) do %>
+  <%= link_to({:filter_by_radius => '100', :search_for => @search_for}) do %>
   <div class="item">100 miles</div> <% end %>
-  <%= link_to({:filter_by_radius => '1000'}) do %>
+  <%= link_to({:filter_by_radius => '1000', :search_for => @search_for}) do %>
   <div class="item">1000 miles</div> <% end %>
 
