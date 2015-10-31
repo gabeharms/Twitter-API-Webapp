@@ -11,23 +11,28 @@ class SessionsController < ApplicationController
   end
 
   def show
-    if user_logged_in 
-      @user = client.user(include_entities: true)
-    else
-      redirect_to failure_path
+    begin
+      if user_logged_in 
+        @user = client.user(include_entities: true)
+      else
+        redirect_to failure_path
+      end
+      
+      if no_lists_exist
+        create_empty_one
+      end
+   
+      @location = getRequestInfo request
+      @radius = params[:filter_by_radius] || 20
+      @result_type = params[:filter_by_type] || 'recent'
+      @selected_list = params[:filter_by_list]
+      @search_for = params[:search_for] || 'healthcare'
+      
+      @tweets = getTweets
+    rescue
+      flash[:error] = 'Sorry, but you have exceeded the maximum number of API requests allowed by twitter\'s free developer account. The API will start allowing requests again in 15 minutes' 
+      redirect_to root_path
     end
-    
-    if no_lists_exist
-      create_empty_one
-    end
- 
-    @location = getRequestInfo request
-    @radius = params[:filter_by_radius] || 20
-    @result_type = params[:filter_by_type] || 'recent'
-    @selected_list = params[:filter_by_list]
-    @search_for = params[:search_for] || 'healthcare'
-    
-    @tweets = getTweets
   end
 
   def error
