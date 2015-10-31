@@ -71,7 +71,7 @@
             <% else %>
               <%= time %> ago
             <% end %>
-              <%= link_to "view on twitter", "#"  %>
+              <%= link_to "view on twitter", "https://twitter.com/#{tweet.user.screen_name}/status/#{tweet.user.status.id}"  %>
 
         </p>
       </div>
