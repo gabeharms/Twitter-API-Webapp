@@ -22,14 +22,12 @@
   
   // 'Add to list' modal actions
    $(document).ready(function(){
-    console.log('hey');
     $("#list-up-toggle").hide();
   });
   
   $(document).ready(function(){
     $(".add-list-item").click(function(event){
       $("#add_to_list_author").val(event.target.id);
-      console.log("yo");
       $("#list-up-toggle").fadeToggle();
       $("#container").fadeTo( "fast", 0.5 );
       return false;
@@ -49,25 +47,6 @@
       }
     });
   
-  });
-  
-  // Display Lists modal actions
-   $(document).ready(function(){
-    console.log('hey');
-    $("#list-display-toggle").hide();
-  });
-  
-  $(document).ready(function(){
-    $(".add-list-item").click(function(event){
-      $("#list-display-toggle").fadeToggle();
-      $("#container").fadeTo( "fast", 0.5 );
-      return false;
-    });
-    $("#hide-lists-popup").click(function(){
-      $("#list-display-toggle").fadeToggle();
-      $("#container").fadeTo( "fast", 1 );
-      return false;
-    });
   });
   
 </script>

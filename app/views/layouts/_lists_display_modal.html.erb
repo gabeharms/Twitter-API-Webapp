@@ -1,0 +1,21 @@
+<div class="pop-up-container" id="lists-display-toggle">
+  <div class="pop-up">
+    <h3>Your Lists</h3>
+    <div class="close-x">
+      <a href="#" id="hide-lists-popup">
+        <%= image_tag( "close-x.png", :alt=> "close", size: "20x20") %></a>
+    </div>
+    <div class="spacer20"></div>
+    <section class="micropost_form">
+      <% session['lists'].each do |list_name, list_array| %>
+        <% if list_name != 'new list' %>
+          <div class="refine-label"><%= '\''+list_name+'\'' %> Authors:</div>
+          <% list_array.each do |author_item| %>
+            <p style="margin: 0px 0px 0px 15px"><%= author_item %></p>
+          <% end %>
+          <br/><br/>
+        <% end %>
+      <% end %>
+    </section>
+  </div>
+</div>

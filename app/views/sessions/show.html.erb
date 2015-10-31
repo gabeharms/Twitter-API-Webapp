@@ -37,7 +37,7 @@
     </div>
   </div>
   <div class="row">
-    <h3 class="page-title"><%= "Search Results for \'#{@search_for}\'" %><br/><p style="font-size: 12px"><%= "#{@location['city']}, #{@location['region']} (#{@location['latitude'].round(5)}, #{@location['longitude'].round(5)})"%></p></h3>
+    <h3 class="page-title"><%= "Search Results(#{@result_count}) for \'#{@search_for}\'" %><br/><p style="font-size: 12px"><%= "#{@location['city']}, #{@location['region']} (#{@location['latitude'].round(5)}, #{@location['longitude'].round(5)})"%></p></h3>
     <div class="col-xs-3 col-md-2 filter-bar">
       <%= render 'layouts/filter_column' %>
     </div>
@@ -52,5 +52,5 @@
 </div>
 <%= render "layouts/modal" %>
 <%= render "layouts/list_modal" %>
-<%= render "layouts/lists_disply_modal" %>
+<%= render "layouts/lists_display_modal" %>
 
