@@ -22,7 +22,7 @@
   
   // Add to list modal actions
    $(document).ready(function(){
-//    $("#list-up-toggle").hide();
+    $("#list-up-toggle").hide();
   });
   
   $(document).ready(function(){
@@ -38,6 +38,16 @@
       $("#container").fadeTo( "fast", 1 );
       return false;
     });
+  
+    $('#list_selection').on('change', function() {
+      if ($(this).val() == 'new list') {
+        ('#list_name_wrapper').append(<input type='text' id='list_name' name='list_name'>);
+      }
+      else {
+        ('#list_name_wrapper').empty();
+      }
+    });
+  
   });
 </script>
 <ol class="tweet-list">
