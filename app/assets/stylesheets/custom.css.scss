@@ -392,3 +392,19 @@ hr{
     max-height: 25px;
     resize: none;
 }
+
+.customer-search{
+	float: right;
+	.button{
+		display: block;
+		width: 100px;
+		float: left;
+		margin-right: 10px;
+	}
+	.search-bar{
+		display: block;
+		width: 200px;
+		float: left;
+		margin-right: 20px;
+	}
+}

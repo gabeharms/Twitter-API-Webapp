@@ -11,25 +11,23 @@ class SessionsController < ApplicationController
   end
 
   def show
-    if session['access_token'] && session['access_token_secret']
+    if user_logged_in 
       @user = client.user(include_entities: true)
     else
       redirect_to failure_path
     end
     
-    if session['lists'].nil?
-      session['lists'] = {}
-      session['lists']["new list"] = []
+    if no_lists_exist
+      create_empty_one
     end
-    @lists = session['lists'].keys
  
-    info = GeoIP.new(Rails.root.join("GeoLiteCity.dat")).city(request.remote_ip)
-    @latitude = info.latitude
-    @longitude = info.longitude
-    @radius = 1000000
-    @city = info.city_name
-    @region = info.real_region_name
-    @tweets = client.search("kobe bryant", result_type: "recent", geocode:"#{@latitude},#{@longitude},#{@radius}mi").take(500).paginate(page: params[:page], :per_page => 5)
+    @location = getRequestInfo request
+    @radius = params[:filter_by_radius] || 1000000
+    @result_type = params[:filter_by_type] || 'recent'
+    @selected_list = params[:filter_by_list]
+    @search_for = params[:search_for] || 'healthcare'
+    
+    @tweets = getTweets
   end
 
   def error
@@ -42,4 +40,34 @@ class SessionsController < ApplicationController
     flash[:success] = "Signed Out Successfully"
     redirect_to root_path
   end
+  
+  
+  private
+  
+    def user_logged_in
+      session['access_token'] && session['access_token_secret']
+    end
+    
+    def no_lists_exist
+      session['lists'].nil?
+    end
+    
+    def create_empty_one
+      session['lists'] = {}
+      session['lists']["new list"] = []
+    end
+    
+    def getRequestInfo request_raw
+      requestInfo = GeoIP.new(Rails.root.join("GeoLiteCity.dat")).city(request_raw.remote_ip)
+      info = {}
+      info['latitude'] = requestInfo.latitude
+      info['longitude'] = requestInfo.longitude
+      info['city'] = requestInfo.city_name
+      info['region'] = requestInfo.real_region_name
+      info
+    end
+    
+    def getTweets
+      client.search("#{@search_for}", result_type: "#{@result_type}", geocode:"#{@latitude},#{@longitude},#{@radius}mi").take(500).paginate(page: params[:page], :per_page => 5)
+    end
 end

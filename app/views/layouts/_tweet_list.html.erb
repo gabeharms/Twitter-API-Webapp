@@ -22,6 +22,7 @@
   
   // Add to list modal actions
    $(document).ready(function(){
+    console.log('hey');
     $("#list-up-toggle").hide();
   });
   
@@ -41,10 +42,10 @@
   
     $('#list_selection').on('change', function() {
       if ($(this).val() == 'new list') {
-        ('#list_name_wrapper').append(<input type='text' id='list_name' name='list_name'>);
+        $('#list_name_wrapper').append("List Name: <input type='text' id='list_name' name='list_name'>");
       }
       else {
-        ('#list_name_wrapper').empty();
+        $('#list_name_wrapper').empty();
       }
     });
   
