@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
     @radius = params[:filter_by_radius] || 1000000
     @result_type = params[:filter_by_type] || 'recent'
     @selected_list = params[:filter_by_list]
-    @search_for = params[:search_for] || 'kobe'
+    @search_for = params[:search_for] || 'healthcare'
     
     @tweets = getTweets
   end
@@ -68,6 +68,6 @@ class SessionsController < ApplicationController
     end
     
     def getTweets
-      client.search("#{@search_for}", result_type: "#{@result_type}", geocode:"#{@latitude},#{@longitude},#{@radius}mi").take(500).paginate(page: params[:page], :per_page => 5)
+      client.search("#{@search_for}", result_type: "#{@result_type}", geocode:"#{@location['latitude']},#{@location['longitude']},#{@radius}mi").take(500).paginate(page: params[:page], :per_page => 5)
     end
 end
