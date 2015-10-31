@@ -347,9 +347,7 @@ hr{
 		font-weight: 500;
   		color: #999999;
 	}
-}
-
-.create-tweet-e{
+	.create-tweet {
 		width: 120px;
 		margin: 25px 0 10px 0;
 		padding: 5px 10px;
@@ -361,6 +359,9 @@ hr{
 		border: 1px solid #f3f3f3;
 		border-radius: 10px;
 }
+}
+
+
 
 .pop-up-container{
 	position: fixed;
@@ -397,7 +398,7 @@ hr{
 	float: right;
 	.button{
 		display: block;
-		width: 100px;
+		width: 150px;
 		float: left;
 		margin-right: 10px;
 	}

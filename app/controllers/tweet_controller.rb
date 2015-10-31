@@ -9,6 +9,15 @@ class TweetController < ApplicationController
       end
     end
     
+    def favorite
+      begin
+        client.favorite(params[:tweet_id])
+        redirect_to profile_path, :flash => { :success => "Favorited Successfully" }
+      rescue
+        redirect_to profile_path, :flash => { :error => "Already Favorited" }
+      end
+    end
+    
     def reply
       client.update("@#{params[:reply_to_tweet_user]} " + params[:reply_to_tweet_response], {"in_reply_to_status_id" => params[:reply_to_tweet_id]})
       flash[:success] = "Replied to Tweet Successfully"
