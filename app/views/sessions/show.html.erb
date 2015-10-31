@@ -32,8 +32,8 @@
     <%= @location['city'] %>
     <%= @location['region'] %>
     <div class="search">
-      <div class="search-bar"><%= text_field_tag :search, params[:search], :placeholder => 'Enter a name', :size => 100, class: "search-customer-field form-group" %></div>
-      <div class="button"><%= submit_tag "Search", :name => nil, class: "btn btn-primary form-group" %></div>
+      <div class="search-bar"><%= text_field_tag :search, @search_for, :placeholder => 'Enter a name', :size => 100, class: "search-field form-group" %></div>
+      <div class="button"><%= submit_tag "Search Twitter", :name => nil, class: "btn btn-primary form-group" %></div>
       <div class="clear-float"></div>
     </div>
   </div>
